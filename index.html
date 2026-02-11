@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DavyDevv | Developer Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #0f0508;
+            --card-bg: #1f0a12;
+            --primary: #d6006e;
+            --secondary: #ff1493;
+            --accent: #ff69b4;
+            --text-main: #ffe6f2;
+            --text-muted: #ffb6c1;
+            --shadow: 0 4px 20px rgba(214, 0, 110, 0.25);
+            --transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            background-image: linear-gradient(45deg, #0f0508 0%, #1a050f 100%);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 5, 8, 0.95);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 15px rgba(255, 20, 147, 0.1);
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            color: var(--text-main);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+            text-shadow: 0 0 10px rgba(255, 20, 147, 0.5);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--secondary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 2rem;
+            background: radial-gradient(circle at center, rgba(214, 0, 110, 0.1) 0%, rgba(15, 5, 8, 0) 70%);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: var(--text-main);
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            border-left: 3px solid var(--primary);
+            border-right: 3px solid var(--primary);
+            background: rgba(31, 10, 18, 0.5);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: var(--primary);
+            color: white;
+            border-radius: 4px;
+            font-weight: 600;
+            box-shadow: 0 0 15px rgba(214, 0, 110, 0.4);
+            transition: var(--transition);
+            border: 2px solid var(--primary);
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            background: transparent;
+            color: var(--secondary);
+            box-shadow: 0 0 25px rgba(255, 20, 147, 0.6);
+            transform: translateY(-3px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--secondary);
+            margin-left: 1rem;
+            border: 2px solid var(--secondary);
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background: var(--secondary);
+            color: #0f0508;
+            box-shadow: 0 0 20px rgba(255, 20, 147, 0.4);
+        }
+        
+        .btn-small {
+            padding: 0.5rem 1.5rem;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        section {
+            padding: 5rem 10%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--text-main);
+            display: inline-block;
+            position: relative;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--primary);
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            background: var(--card-bg);
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(214, 0, 110, 0.3);
+        }
+
+        .about-img {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .avatar-container {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            padding: 5px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            box-shadow: 0 0 30px rgba(214, 0, 110, 0.5);
+        }
+
+        .avatar-container img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--bg-color);
+            background-color: var(--bg-color);
+        }
+
+        .about-text {
+            flex: 2;
+        }
+
+        .about-text h3 {
+            color: var(--secondary);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .about-text strong {
+            color: var(--accent);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid rgba(214, 0, 110, 0.1);
+            transition: var(--transition);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--secondary);
+            box-shadow: 0 0 20px rgba(255, 20, 147, 0.2);
+            background: rgba(255, 20, 147, 0.05);
+        }
+
+        .skill-card i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+        
+        .skill-card:hover i {
+            color: var(--accent);
+            transform: scale(1.1);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(214, 0, 110, 0.2);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--secondary);
+            box-shadow: 0 10px 30px rgba(214, 0, 110, 0.3);
+        }
+
+        .project-img {
+            height: 180px;
+            background: #2a0e18;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .project-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+            opacity: 0.9;
+        }
+
+        .project-card:hover .project-img img {
+            transform: scale(1.1);
+            opacity: 1;
+        }
+
+        .project-info {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-info h3 {
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .project-info h3 i {
+            font-size: 0.8em;
+            color: var(--secondary);
+        }
+        
+        .project-desc {
+            flex-grow: 1;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tags span {
+            display: inline-block;
+            background: rgba(214, 0, 110, 0.15);
+            color: var(--accent);
+            padding: 0.3rem 0.9rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            border: 1px solid rgba(214, 0, 110, 0.3);
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .contact-container {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+            background: var(--card-bg);
+            padding: 4rem;
+            border-radius: 15px;
+            border: 1px solid rgba(214, 0, 110, 0.3);
+            box-shadow: var(--shadow);
+        }
+
+        .social-links {
+            margin: 2rem 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary);
+            font-size: 1.8rem;
+            border: 1px solid var(--primary);
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 0 20px var(--primary);
+            transform: scale(1.1);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: #080204;
+            color: var(--text-muted);
+            margin-top: 4rem;
+            border-top: 1px solid var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 2rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                display: none; 
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">
+            <i class="fas fa-terminal"></i> DavyDevv
+        </div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <h1>Hi, I'm <span style="color:var(--secondary)">DavyDevv</span></h1>
+        <p>Full Stack Game Developer, UI Designer & Audio Engineer.</p>
+        <div>
+            <a href="#projects" class="btn"><i class="fas fa-code"></i> View My Work</a>
+            <a href="#contact" class="btn btn-outline">Contact Me <i class="fas fa-envelope"></i></a>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="section-title">
+            <h2>About Me</h2>
+        </div>
+        <div class="about-content">
+            <div class="about-img">
+                <div class="avatar-container">
+                    <img src="https://cdn.discordapp.com/avatars/928004728258969682/d7da7e4647f04def9722a7f4885916cc.png?size=1024" alt="DavyDevv">
+                </div> 
+            </div>
+            <div class="about-text">
+                <h3>Creating Immersive Roblox Experiences</h3>
+                <br>
+                <p>
+                    I am a versatile developer skilled in both the visual and technical aspects of game creation.
+                    From writing complex <strong>Lua</strong> and <strong>Python</strong> scripts to designing stylish 
+                    <strong>GFX</strong> and immersive <strong>SFX</strong>, I bring games to life.
+                </p>
+                <br>
+                <p><i class="fas fa-arrow-right" style="color:var(--secondary)"></i> Check out my GitHub or Discord to see more!</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="section-title">
+            <h2>My Skills</h2>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <i class="fas fa-gamepad"></i>
+                <h3>Lua</h3>
+            </div>
+            <div class="skill-card">
+                <i class="fab fa-python"></i>
+                <h3>Python</h3>
+            </div>
+            <div class="skill-card">
+                <i class="fab fa-html5"></i>
+                <h3>HTML</h3>
+            </div>
+            <div class="skill-card">
+                <i class="fab fa-css3-alt"></i>
+                <h3>CSS</h3>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-file-code"></i>
+                <h3>JSON</h3>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-music"></i>
+                <h3>SFX</h3>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-layer-group"></i>
+                <h3>GFX</h3>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="section-title">
+            <h2>Featured Projects</h2>
+        </div>
+        <div class="projects-grid">
+            
+            <div class="project-card">
+                <div class="project-img">
+                    <img src="https://devvgamesrblx.github.io/wanted-wiki/images/background.png" alt="Wanted Wiki">
+                </div>
+                <div class="project-info">
+                    <h3><i class="fas fa-book"></i> Wanted Wiki</h3>
+                    <p class="project-desc">Official wiki and documentation for the Wanted game.</p>
+                    <div class="project-tags">
+                        <span>Web</span>
+                        <span>Docs</span>
+                    </div>
+                    <a href="https://devvgamesrblx.github.io/wanted-wiki/" target="_blank" class="btn btn-small">Visit Wiki</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-img">
+                    <img src="https://tr.rbxcdn.com/180DAY-fc95437bf0fcf314f47668be89a09759/150/150/Image/Webp/noFilter" alt="Roll Game">
+                </div>
+                <div class="project-info">
+                    <h3><i class="fas fa-dice"></i> Roll</h3>
+                    <p class="project-desc">A thrilling RNG-based rolling game mechanic.</p>
+                    <div class="project-tags">
+                        <span>Lua</span>
+                        <span>RNG</span>
+                    </div>
+                    <a href="https://www.roblox.com/games/75723377683716/Roll" target="_blank" class="btn btn-small">Play Now</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-img">
+                    <img src="https://tr.rbxcdn.com/180DAY-9c6a28d9c71b820e87ba6fc015c53c5d/150/150/Image/Webp/noFilter" alt="Geeble Tower Defense">
+                </div>
+                <div class="project-info">
+                    <h3><i class="fas fa-shield-alt"></i> Geeble TD</h3>
+                    <p class="project-desc">Strategic defense game. Build towers and stop the waves.</p>
+                    <div class="project-tags">
+                        <span>Lua</span>
+                        <span>Tower Defense</span>
+                    </div>
+                    <a href="https://www.roblox.com/games/94191048110183/Geeble-Tower-Defense" target="_blank" class="btn btn-small">Play Now</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-img">
+                    <img src="https://tr.rbxcdn.com/180DAY-d862e9c4b4e7a0784b140fafa949b3bd/150/150/Image/Webp/noFilter" alt="1 Robux 5 Balls">
+                </div>
+                <div class="project-info">
+                    <h3><i class="fas fa-bowling-ball"></i> 1 R$ 5 Balls</h3>
+                    <p class="project-desc">Physics-based ball drop and simulation game.</p>
+                    <div class="project-tags">
+                        <span>Lua</span>
+                        <span>Physics</span>
+                    </div>
+                    <a href="https://www.roblox.com/games/17546724256/1-robux-5-balls" target="_blank" class="btn btn-small">Play Now</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-img">
+                    <img src="https://t3.rbxcdn.com/180DAY-2c1129a448e74940038294483f07d5a6" alt="Anti-inject System">
+                </div>
+                <div class="project-info">
+                    <h3><i class="fas fa-lock"></i> Anti-Inject</h3>
+                    <p class="project-desc">Security system to detect and prevent script injections.</p>
+                    <div class="project-tags">
+                        <span>Lua</span>
+                        <span>Security</span>
+                    </div>
+                    <a href="https://www.roblox.com/games/127181026194965/Anti-Inject" target="_blank" class="btn btn-small">View System</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="section-title">
+            <h2>Get In Touch</h2>
+        </div>
+        <div class="contact-container">
+            <p>Ready to bring your game ideas to life? <br>Send me a message!</p>
+            
+            <div class="social-links">
+                <a href="https://github.com/DevvGamesRblx" target="_blank" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                
+                <a href="https://discord.com/users/928004728258969682" target="_blank" title="Discord">
+                    <i class="fab fa-discord"></i>
+                </a>
+            </div>
+
+            <br>
+            <a href="https://discord.com/users/928004728258969682" class="btn">Message on Discord</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 DavyDevv. Made with <i class="fas fa-code"></i> and <i class="fas fa-heart"></i></p>
+    </footer>
+
+</body>
+</html>
