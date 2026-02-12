@@ -7,15 +7,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --bg-color: #0f0508;
-            --card-bg: #1f0a12;
-            --primary: #d6006e;
-            --secondary: #ff1493;
-            --accent: #ff69b4;
-            --text-main: #ffe6f2;
-            --text-muted: #ffb6c1;
-            --shadow: 0 4px 20px rgba(214, 0, 110, 0.25);
+            --bg-color: #000000;
+            --card-bg: #0a0a0a; 
+            
+            --primary: #b3004b;
+            --secondary: #e6005c;
+            --accent: #ff0066;
+            
+            --text-main: #ffffff;
+            --text-muted: #888888;
+            
+            --shadow: 0 4px 20px rgba(179, 0, 75, 0.15);
             --transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --border-color: #330014;
         }
 
         * {
@@ -30,7 +34,7 @@
             background-color: var(--bg-color);
             color: var(--text-main);
             line-height: 1.6;
-            background-image: linear-gradient(45deg, #0f0508 0%, #1a050f 100%);
+            background-image: radial-gradient(circle at top right, #1a000b 0%, #000000 40%);
         }
 
         a {
@@ -42,25 +46,29 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(15, 5, 8, 0.95);
+            background: rgba(0, 0, 0, 0.95);
             padding: 1rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 15px rgba(255, 20, 147, 0.1);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
             z-index: 1000;
             backdrop-filter: blur(5px);
-            border-bottom: 2px solid var(--primary);
+            border-bottom: 1px solid var(--primary);
         }
 
         .logo {
             font-size: 1.5rem;
             font-weight: 700;
-            color: var(--secondary);
+            color: var(--text-main);
             letter-spacing: 1px;
             display: flex;
             align-items: center;
             gap: 10px;
+        }
+        
+        .logo i {
+            color: var(--secondary);
         }
 
         .nav-links {
@@ -70,14 +78,14 @@
 
         .nav-links a {
             font-weight: 600;
-            color: var(--text-main);
+            color: var(--text-muted);
             transition: var(--transition);
             position: relative;
         }
 
         .nav-links a:hover {
             color: var(--secondary);
-            text-shadow: 0 0 10px rgba(255, 20, 147, 0.5);
+            text-shadow: 0 0 10px rgba(230, 0, 92, 0.4);
         }
 
         .nav-links a::after {
@@ -103,7 +111,7 @@
             align-items: center;
             text-align: center;
             padding: 0 2rem;
-            background: radial-gradient(circle at center, rgba(214, 0, 110, 0.1) 0%, rgba(15, 5, 8, 0) 70%);
+            background: radial-gradient(circle at center, rgba(179, 0, 75, 0.08) 0%, rgba(0, 0, 0, 0) 60%);
         }
 
         .hero h1 {
@@ -118,9 +126,9 @@
             max-width: 600px;
             margin-bottom: 2rem;
             padding: 1rem;
-            border-left: 3px solid var(--primary);
-            border-right: 3px solid var(--primary);
-            background: rgba(31, 10, 18, 0.5);
+            border-left: 2px solid var(--primary);
+            border-right: 2px solid var(--primary);
+            background: rgba(10, 10, 10, 0.8);
         }
 
         .btn {
@@ -130,7 +138,7 @@
             color: white;
             border-radius: 4px;
             font-weight: 600;
-            box-shadow: 0 0 15px rgba(214, 0, 110, 0.4);
+            box-shadow: 0 4px 15px rgba(179, 0, 75, 0.3);
             transition: var(--transition);
             border: 2px solid var(--primary);
             cursor: pointer;
@@ -141,22 +149,24 @@
         .btn:hover {
             background: transparent;
             color: var(--secondary);
-            box-shadow: 0 0 25px rgba(255, 20, 147, 0.6);
+            box-shadow: 0 0 20px rgba(230, 0, 92, 0.4);
+            border-color: var(--secondary);
             transform: translateY(-3px);
         }
 
         .btn-outline {
             background: transparent;
-            color: var(--secondary);
+            color: var(--text-main);
             margin-left: 1rem;
-            border: 2px solid var(--secondary);
+            border: 2px solid var(--text-muted);
             box-shadow: none;
         }
 
         .btn-outline:hover {
-            background: var(--secondary);
-            color: #0f0508;
-            box-shadow: 0 0 20px rgba(255, 20, 147, 0.4);
+            background: var(--text-main);
+            color: #000;
+            border-color: var(--text-main);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
         }
         
         .btn-small {
@@ -191,7 +201,7 @@
             padding: 3rem;
             border-radius: 15px;
             box-shadow: var(--shadow);
-            border: 1px solid rgba(214, 0, 110, 0.3);
+            border: 1px solid var(--border-color);
         }
 
         .about-img {
@@ -204,9 +214,9 @@
             width: 200px;
             height: 200px;
             border-radius: 50%;
-            padding: 5px;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            box-shadow: 0 0 30px rgba(214, 0, 110, 0.5);
+            padding: 4px;
+            background: linear-gradient(45deg, var(--primary), #000);
+            box-shadow: 0 0 20px rgba(179, 0, 75, 0.3);
         }
 
         .avatar-container img {
@@ -214,8 +224,8 @@
             height: 100%;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid var(--bg-color);
-            background-color: var(--bg-color);
+            border: 4px solid #000;
+            background-color: #000;
         }
 
         .about-text {
@@ -234,7 +244,9 @@
         }
 
         .about-text strong {
-            color: var(--accent);
+            color: var(--text-main);
+            text-decoration: underline;
+            text-decoration-color: var(--primary);
         }
 
         .skills-grid {
@@ -248,26 +260,31 @@
             padding: 2rem;
             border-radius: 10px;
             text-align: center;
-            border: 1px solid rgba(214, 0, 110, 0.1);
+            border: 1px solid var(--border-color);
             transition: var(--transition);
         }
 
         .skill-card:hover {
             transform: translateY(-10px);
             border-color: var(--secondary);
-            box-shadow: 0 0 20px rgba(255, 20, 147, 0.2);
-            background: rgba(255, 20, 147, 0.05);
+            box-shadow: 0 5px 15px rgba(230, 0, 92, 0.1);
+            background: #0f0f0f;
         }
 
         .skill-card i {
             font-size: 2.5rem;
             margin-bottom: 1rem;
-            color: var(--secondary);
+            color: var(--text-muted);
+            transition: var(--transition);
         }
         
         .skill-card:hover i {
-            color: var(--accent);
+            color: var(--secondary);
             transform: scale(1.1);
+        }
+        
+        .skill-card h3 {
+            color: var(--text-main);
         }
 
         .projects-grid {
@@ -284,22 +301,23 @@
             transition: var(--transition);
             display: flex;
             flex-direction: column;
-            border: 1px solid rgba(214, 0, 110, 0.2);
+            border: 1px solid var(--border-color);
         }
 
         .project-card:hover {
             transform: translateY(-5px);
             border-color: var(--secondary);
-            box-shadow: 0 10px 30px rgba(214, 0, 110, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
         .project-img {
             height: 180px;
-            background: #2a0e18;
+            background: #111;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
+            border-bottom: 1px solid var(--border-color);
         }
         
         .project-img img {
@@ -307,7 +325,7 @@
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease;
-            opacity: 0.9;
+            opacity: 0.8;
         }
 
         .project-card:hover .project-img img {
@@ -332,7 +350,7 @@
 
         .project-info h3 i {
             font-size: 0.8em;
-            color: var(--secondary);
+            color: var(--primary);
         }
         
         .project-desc {
@@ -344,14 +362,14 @@
 
         .project-tags span {
             display: inline-block;
-            background: rgba(214, 0, 110, 0.15);
-            color: var(--accent);
+            background: #141414;
+            color: var(--secondary);
             padding: 0.3rem 0.9rem;
             border-radius: 4px;
             font-size: 0.75rem;
             margin-right: 0.5rem;
             margin-bottom: 0.5rem;
-            border: 1px solid rgba(214, 0, 110, 0.3);
+            border: 1px solid var(--border-color);
             text-transform: uppercase;
             font-weight: 600;
         }
@@ -363,8 +381,12 @@
             background: var(--card-bg);
             padding: 4rem;
             border-radius: 15px;
-            border: 1px solid rgba(214, 0, 110, 0.3);
+            border: 1px solid var(--border-color);
             box-shadow: var(--shadow);
+        }
+        
+        .contact-container p {
+            color: var(--text-muted);
         }
 
         .social-links {
@@ -379,19 +401,20 @@
             display: inline-flex;
             width: 60px;
             height: 60px;
-            background: rgba(255, 255, 255, 0.05);
+            background: #111;
             border-radius: 50%;
             align-items: center;
             justify-content: center;
-            color: var(--secondary);
+            color: var(--text-main);
             font-size: 1.8rem;
-            border: 1px solid var(--primary);
+            border: 1px solid var(--border-color);
             transition: var(--transition);
         }
 
         .social-links a:hover {
             background: var(--primary);
             color: white;
+            border-color: var(--primary);
             box-shadow: 0 0 20px var(--primary);
             transform: scale(1.1);
         }
@@ -399,10 +422,10 @@
         footer {
             text-align: center;
             padding: 2rem;
-            background: #080204;
+            background: #000;
             color: var(--text-muted);
             margin-top: 4rem;
-            border-top: 1px solid var(--primary);
+            border-top: 1px solid #222;
         }
 
         @media (max-width: 768px) {
@@ -465,7 +488,7 @@
                     <strong>GFX</strong> and immersive <strong>SFX</strong>, I bring games and projects to life.
                 </p>
                 <br>
-                <p><i class="fas fa-arrow-right" style="color:var(--secondary)"></i> Check out my GitHub or Discord to see more!</p>
+                <p><i class="fas fa-arrow-right" style="color:var(--primary)"></i> Check out my GitHub or Discord to see more!</p>
             </div>
         </div>
     </section>
@@ -544,7 +567,7 @@
 
             <div class="project-card">
                 <div class="project-img">
-                    <img src=https://tr.rbxcdn.com/180DAY-e6810b457b2b93e04d0dcf9b0f36997b/1024/576/Image/Webp/noFilter" alt="Geeble Tower Defense">
+                    <img src="https://tr.rbxcdn.com/180DAY-e6810b457b2b93e04d0dcf9b0f36997b/1024/576/Image/Webp/noFilter" alt="Geeble Tower Defense">
                 </div>
                 <div class="project-info">
                     <h3><i class="fas fa-shield-alt"></i> Geeble TD</h3>
@@ -622,5 +645,3 @@
 
 </body>
 </html>
-
-
